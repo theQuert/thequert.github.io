@@ -1,0 +1,6 @@
+#Jekll configuration
+name: test_name
+description: Ventures in coding
+url: "https://thequert.github.io"
+markdown: kramdown
+highlight: rouge
