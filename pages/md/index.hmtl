@@ -1068,7 +1068,7 @@ stack = new Stack</li>
 <em>Unlike the implementation of a fixed size array, we don't need to check if the stack is full or not,
 there is no limit to the size of stack.</em></p>
 <ul>
-<li>Linked List Head
+<li>Linked List Head<br>
 <em>pseudo code: Pushing new element</em>
 </li>
 </ul>
