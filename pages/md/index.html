@@ -1015,10 +1015,12 @@ stack = new Stack</li>
         int items[];
         int top;
         int maxsize = 10;
-
         }
 </code></pre>
 <p><em>psudo code</em>: Pushing new element</p>
+<ul>
+<li><strong>Check if the Stack is full</strong></li>
+</ul>
 <pre><code>    stack = new Stack
     function push (stk, x) {
         if stk.top == stk.maxsize 
@@ -1028,16 +1030,74 @@ stack = new Stack</li>
             stk.top = stk.top + 1
         }
 </code></pre>
-<p><em>psudo code</em>: Poping off elements</p>
+<p><em>psudo code</em>: Pop off elements</p>
+<ul>
+<li><strong>Check if the stack is empty</strong></li>
+</ul>
 <pre><code>    function pop(stk) {
-        
+       if stk.top == 0
+           underflow error handling
+       else
+           pop element
+           stk.top = stk.top - 1
+           return stk.items[stk.top] // return popped value
+        }
+</code></pre>
+<p><em>pseudo code</em>: Peak</p>
+<pre><code>    function peak (stk) {
+        return stk.items[stk.top-1]
+        }
+
+    function is_empty (stk) {
+        return stk.top == 0
         }
 </code></pre>
 <ul>
 <li>Dynamic Array</li>
 <li>Linked List Tail</li>
-<li>Linked List Head</li>
 </ul>
+<pre><code>    struct stack {
+        Node* head
+        Node* tail // Allow us to push elements in O of one time,
+                   // But, we still need to traverse through the whole linked list to remove the 
+                      last element. Thus, that's not a great solution.
+        int count
+        }
+</code></pre>
+<p><strong>The solution is actually to add a new node, and assign it as the <code>New Head</code></strong><br>
+<em>Unlike the implementation of a fixed size array, we don't need to check if the stack is full or not,
+there is no limit to the size of stack.</em></p>
+<ul>
+<li>Linked List Head
+<em>pseudo code: Pushing new element</em>
+</li>
+</ul>
+<pre><code>    function push (stk.x) {
+        newNode = new Node
+        newNode.value = x
+        newNode.next = stk.head
+        stk.head = newNode
+        stk.cout = stk.count + 1
+        }
+
+</code></pre>
+<p><em>C code</em></p>
+<pre><code>    struct Node {
+        int value;
+        Node* next;
+        }
+</code></pre>
+<p><em>pesudo code: Pop off the element at the <code>Front</code></em></p>
+<pre><code>    function pop (stk, x) {
+        if stk.head == NULL
+            underflow error handling        
+        else
+            r = stk.head.value
+            stk.head = stk.head.next
+            stk.cout = stk.count - 1
+            return r
+        }
+</code></pre>
 <h3>
 <a id="user-content-queue-fifo" class="anchor" href="#queue-fifo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Queue (FIFO)</h3>
 <h3>
