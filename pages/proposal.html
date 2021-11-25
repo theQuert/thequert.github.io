@@ -1,0 +1,661 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Proposal</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+}
+
+.simple-table-header {
+	background: rgb(247, 246, 243);
+	color: black;
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(145, 145, 142, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(187, 132, 108, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(215, 129, 58, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 148, 51, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(108, 155, 125, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(91, 151, 189, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(167, 130, 195, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(205, 116, 159, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(225, 111, 100, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(145, 145, 142, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(187, 132, 108, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(215, 129, 58, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 148, 51, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(108, 155, 125, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(91, 151, 189, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(167, 130, 195, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(205, 116, 159, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(225, 111, 100, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="0bc19376-fd2e-4644-b073-14af90aacb5a" class="page sans"><header><h1 class="page-title">Proposal</h1></header><div class="page-body"><ul id="290008a2-600d-49f8-8a8b-b32938e4d63b" class="bulleted-list"><li style="list-style-type:disc">Datasets<ul id="b81e63f2-f9a4-437e-8826-7a29ecd1473a" class="bulleted-list"><li style="list-style-type:circle"><strong>COVID-19 World Vaccination Progress</strong><p id="b9f7e52d-2169-4f68-b7d8-cbfb7e3c0094" class="">Data collected daily from <a href="https://ourworldindata.org/"><strong>Our World in Data</strong></a> GitHub repository for <a href="https://github.com/owid/covid-19-data">COVID-19</a></p></li></ul><ul id="d8e00412-31d3-43c8-bbff-8a0c13738002" class="bulleted-list"><li style="list-style-type:circle"><strong>COVID-19 All Vaccines Tweets</strong><p id="950dd149-72d1-4b36-9f03-f937057d5287" class="">Collect recent tweets about the COVID-19 vaccines used in entire world on large scale</p></li></ul></li></ul><ul id="da3b012e-dd80-4da8-b6d0-c05231a21ea5" class="bulleted-list"><li style="list-style-type:disc">Duration<ul id="03d4355a-3339-4877-8b47-4a8f7e49b2d8" class="bulleted-list"><li style="list-style-type:circle">Recent 2 months (2021-09-20 ~ 2021-11-20)</li></ul><ul id="810571ac-8a66-43b7-a21e-5ccec80ad706" class="bulleted-list"><li style="list-style-type:circle">Recent 2 weeks (2021-11-05 ~ 2021-11-20)</li></ul></li></ul><ul id="2729c237-b774-4b64-899a-695900a571c0" class="bulleted-list"><li style="list-style-type:disc">Methods<ul id="3160810d-2bf6-4aba-87f0-aed240845626" class="bulleted-list"><li style="list-style-type:circle">Sentiment Analysis<ul id="78ee6909-43c4-4d8d-9403-c8b6a96df5e0" class="bulleted-list"><li style="list-style-type:square">Find the sentiment variance during the duration (recent 2 months and recent 2 weeks respectively).</li></ul><ul id="59d68dd4-1f28-489c-bb03-9d07e66bbc22" class="bulleted-list"><li style="list-style-type:square">Find the sentiment variance on different vaccines brands (this could reflect the public confidence on vaccines &amp; vaccine brands).</li></ul></li></ul><ul id="8b51d369-f229-4799-bcd5-86dae78960c0" class="bulleted-list"><li style="list-style-type:circle">Topic Modeling<ul id="267ffb97-e547-4764-9e86-96996ae715bc" class="bulleted-list"><li style="list-style-type:square">Find the topic of tweets discussions in recent 2 months</li></ul><ul id="844f9ac5-9ff2-4ac0-9a90-a077f51d5867" class="bulleted-list"><li style="list-style-type:square">Find the topic of tweets discussions in recent 2 weeks</li></ul><ul id="b1909091-000c-4acb-9729-d880ab352b6f" class="bulleted-list"><li style="list-style-type:square">Find the topic of related news reported recently (if available)</li></ul></li></ul><ul id="0653ae62-9a0a-4974-bde1-3102a7bbe867" class="bulleted-list"><li style="list-style-type:circle">Trend Analysis<ul id="f7aa7de1-7dcf-4f4e-9285-2190f669e152" class="bulleted-list"><li style="list-style-type:square">Find the trends of vaccines vaccinated in specific country (take U.S.A as example).</li></ul><ul id="21b9fda5-118c-4890-9f88-3d334b38fe4c" class="bulleted-list"><li style="list-style-type:square">Find the trends of brands vaccinated in specific country.</li></ul></li></ul></li></ul><ul id="8107a6ea-9719-4528-b9e3-3cdbaeed00fb" class="bulleted-list"><li style="list-style-type:disc">Observation<ol type="1" id="8057a1c4-a21f-4a9b-9cb9-4fa9a6bc4ff3" class="numbered-list" start="1"><li>Compare the discussed topics and vaccination.</li></ol><ol type="1" id="3d9d9848-cb52-42c2-9d43-367f704e282a" class="numbered-list" start="2"><li>Analyze data in recent 2 months: 
+We could compare [sentiments on brands + topic of tweets] and the 
+[number of daily vaccinations].</li></ol><ol type="1" id="ca97596f-895a-4447-834c-441bfceeeed2" class="numbered-list" start="3"><li>Analyze and predict based on recent 2 weeks data: 
+Based on the observation, we are able to analyze the topic discussed, and sentiment on different brands in 2 weeks. Then, we can predict the vaccination variance in the future 7 days. </li></ol><ol type="1" id="491c14a3-3dfd-454f-933c-91cfff2839c4" class="numbered-list" start="4"><li>If available, we could also take consider on the related vaccination news to support our insights.</li></ol><hr id="13504645-f8d6-45d8-b82a-d398e39941ca"/><p id="f3d01deb-2693-4b3a-b11d-a0f76a3d308b" class=""><strong>Attributes from collected data</strong></p><ul id="5cfc5511-4d35-44fa-b773-c23d524ae6d9" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Country</mark><strong> - </strong> the country for which the vaccination information is provided;</li></ul><ul id="6c2d2e1e-0184-43a6-a316-2e72fa115830" class="bulleted-list"><li style="list-style-type:circle">Country ISO Code - ISO code for the country;</li></ul><ul id="b8ec621a-107a-46d4-a34d-418ed9465df4" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Date</mark> - date for the data entry; for some of the dates we have only the daily vaccinations, for others, only the (cumulative) total;</li></ul><ul id="d585276b-c864-469f-93a2-0ddbf27ec11f" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Total number of vaccinations</mark> - this is the absolute number of total immunizations in the country;</li></ul><ul id="f03b2e7f-fc9f-4b79-99af-7502927cc99f" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Total number of people vaccinated</mark> - a person, depending on the immunization scheme, will receive one or more (typically 2) vaccines; at a certain moment, the number of vaccination might be larger than the number of people;</li></ul><ul id="92005200-a7ac-4047-adfa-982fa03e6db9" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Total number of people fully vaccinated</mark> - this is the number of people that received the entire set of immunization according to the immunization scheme (typically 2); at a certain moment in time, there might be a certain number of people that received one vaccine and another number (smaller) of people that received all vaccines in the scheme;</li></ul><ul id="35452c40-4e0e-46d2-b831-f5c65ca5be8c" class="bulleted-list"><li style="list-style-type:circle">Daily vaccinations (raw) - for a certain data entry, the number of vaccination for that date/country;</li></ul><ul id="fd18360e-f17b-4d2c-8220-5b11184dde7a" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Daily vaccinations</mark> - for a certain data entry, the number of vaccination for that date/country;</li></ul><ul id="a16e0542-bff7-4142-b780-0e2071d7aa06" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Total vaccinations per hundred</mark> - ratio (in percent) between vaccination number and total population up to the date in the country;</li></ul><ul id="d3413e4d-1861-49c3-9b99-0a212b433fdd" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Total number of people vaccinated per hundred</mark> - ratio (in percent) between population immunized and total population up to the date in the country;</li></ul><ul id="9c37acc7-06d4-4f2c-8fad-ad0a9c040df8" class="bulleted-list"><li style="list-style-type:circle">Total number of people fully vaccinated per hundred - ratio (in percent) between population fully immunized and total population up to the date in the country;</li></ul><ul id="e599b81e-82ce-4111-b546-3a1e01fdc8dd" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Number of vaccinations per day</mark> - number of daily vaccination for that day and country;</li></ul><ul id="577f3f66-8498-43b1-ab19-3f6bd654682d" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Daily vaccinations per million</mark> - ratio (in ppm) between vaccination number and total population for the current date in the country;</li></ul><ul id="0a44e162-d4ed-478d-b81f-c13bae308422" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Vaccines used in the country</mark> - total number of vaccines used in the country (up to date);</li></ul><ul id="136b8957-cb47-4fb7-b4f5-ddb21db58269" class="bulleted-list"><li style="list-style-type:circle"><mark class="highlight-orange">Vaccines brands used in each country</mark> - per day</li></ul><ul id="83d80ac5-236e-48b6-9a07-adb7c9d4ed6d" class="bulleted-list"><li style="list-style-type:circle">Source name - source of the information (national authority, international organization, local organization etc.);</li></ul><ul id="d84b71d6-2733-4504-8964-90cfe362d58b" class="bulleted-list"><li style="list-style-type:circle">Source website - website of the source of information;</li></ul></li></ul><p id="f980aa0a-0153-466a-85fc-668d32ef46bc" class="">
+</p><p id="9adc7682-5bd7-43d2-aa5d-6bf696499ded" class="">
+</p></div></article></body></html>
