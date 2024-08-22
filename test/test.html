@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stima API Server</title>
+    <!-- Prism.js CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f0f0f0; /* Set the background color */
+            color: #333; /* Default text color */
+            font-family: Arial, sans-serif; /* Default font */
+            padding: 20px; /* Padding around the content */
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        h1, h2 {
+            margin-top: 20px;
+        }
+        .code-block {
+            background-color: #282A36; /* Dark background */
+            color: #D7DEE9; /* Light text color */
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-family: 'Courier New', Courier, monospace; /* Monospace font */
+        }
+        pre {
+            margin: 0;
+            overflow-x: auto; /* Ensure long code lines are scrollable */
+        }
+        code {
+            display: block;
+            white-space: pre; /* Preserve whitespace formatting */
+        }
+    </style>
+</head>
+<body>
+    <h1>模型價格與呼叫別名</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>模型名稱</th>
+                <th>發行商</th>
+                <th>計費單位</th>
+                <th>價格</th>
+                <th>模型呼叫別名</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>GPT-4o</td>
+                <td>OpenAI</td>
+                <td>按量付費</td>
+                <td>Input Tokens: $0.00069/K tokens<br>Output Tokens: $0.046/K tokens</td>
+                <td><b>gpt-4o</b></td>
+            </tr>
+            <tr>
+                <td>GPT-4 Turbo</td>
+                <td>OpenAI</td>
+                <td>按量付費</td>
+                <td>Input Tokens: $0.046/K tokens<br>Output Tokens: $1.38/K tokens</td>
+                <td><b>gpt-4-turbo</b></td>
+            </tr>
+            <tr>
+                <td>GPT-3.5 Turbo</td>
+                <td>OpenAI</td>
+                <td>按量付費</td>
+                <td>Input Tokens: $0.0023/K tokens<br>Output Tokens: $0.0069/K tokens</td>
+                <td><b>gpt-3.5-turbo</b></td>
+            </tr>
+            <tr>
+                <td>Claude 3.5 Sonnet</td>
+                <td>Anthropic</td>
+                <td>按量付費</td>
+                <td>Input Tokens: $0.00138/K tokens<br>Output Tokens: $0.046/K tokens</td>
+                <td><b>cow-3-5-20240620<br>claude-3-5-sonnet-20240620</b></td>
+            </tr>
+            <tr>
+                <td>Gemini 1.5 Pro</td>
+                <td>Google</td>
+                <td>按量付費</td>
+                <td>Input Tokens: $0.0161/K tokens<br>Output Tokens: $0.046/K tokens</td>
+                <td><b>gemini-1.5-pro-latest</b></td>
+            </tr>
+            <tr>
+                <td>Gemini 1.5 Flash</td>
+                <td>Google</td>
+                <td>按量付費</td>
+                <td>Input Tokens: $0.00184/K tokens<br>Output Tokens: $0.00552/K tokens</td>
+                <td><b>gemini-1.5-flash-latest</b></td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>API 連接管道</h1>
+    <ul>
+        <li><b><a href="https://api.stima.tech/">https://api.stima.tech</a></b></li>
+        <li><b><a href="https://api.stima.tech/v1">https://api.stima.tech/v1</a></b></li>
+        <li><b><a href="https://api.stima.tech/v1/chat/completions">https://api.stima.tech/v1/chat/completions</a></b></li>
+    </ul>
+    <h1>透過 cURL 觸發 API 請求</h1>
+    <div class="code-block">
+        <!-- Embed the Gist here -->
+        <script src="https://gist.github.com/theQuert/b488f620402a11be40bd64051596c53a.js"></script>
+    </div>
+    <h1>Using Python to make API Requests</h1>
+    <div class="code-block">
+        <pre><code class="language-python">key = 'sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://api.stima.tech/v1/",
+    api_key=key
+)
+
+response = client.chat.completions.create(
+    # model="gpt-4o",
+    # model="claude-3-5-sonnet-20240620",
+    # model="gpt-3.5-turbo",
+    model="cow-3-5-20240620",
+    messages=[
+        {"role": "user", "content": "Hi, this is user speaking. Say hi to me."},]
+
+    )
+print(response)
+        </code></pre>
+    </div>
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-bash.min.js"></script>
+</body>
+</html>
