@@ -17,6 +17,13 @@
         <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
         <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <style>
+            .loading-indicator {
+                color: #6c757d;
+                font-style: italic;
+                font-size: 0.9em;
+            }
+        </style>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -180,64 +187,64 @@
                                     <td><code><a href="https://github.com/hhhuang/CAG" target="_blank"><b>hhhuang/CAG</b></code></td>
                                     <td>Cache-Augmented Generation: A Simple, Efficient Alternative to RAG</td>
                                     <td>Python, PyTorch, Shell</td>
-                                    <td>1.1k</td>
-                                    <td>160</td>
+                                    <td><span class="loading-indicator">loading...</span></td>
+                                    <td><span class="loading-indicator">loading...</span></td>
                                 </tr>
                                 <tr>
                                     <td><code><a href="https://github.com/theQuert/Event-Triggered-Article-Updating-System" target="_blank"><b>Event-Triggered-Article-Updating-System</b></code></td>
                                     <td>Event Triggered Article Updating System</td>
                                     <td>Python, PyTorch, Shell, Gradio</td>
-                                    <td>2</td>
-                                    <td>2</td>
+                                    <td><span class="loading-indicator">loading...</span></td>
+                                    <td><span class="loading-indicator">loading...</span></td>
                                 </tr>
                                 <tr>
                                     <td><code><a href="https://github.com/Lightning-AI/lit-llama" target="_blank"><b>Lightning-AI/lit-llama</b></code></td>
                                     <td>Debugging the source code related to fine-tune LLaMA</td>
                                     <td>Python, PyTorch, PyTorch-Lightning</td>
-                                    <td>6k</td>
-                                    <td>519</td>
+                                    <td><span class="loading-indicator">loading...</span></td>
+                                    <td><span class="loading-indicator">loading...</span></td>
                                 </tr>
                                 <tr>
                                     <td><code><a href="https://github.com/hhhuang/NetKu" target="_blank"><b>hhhuang/NetKu</b></code></td>
                                     <td>A Multi-grained Dataset for News Event Triggered Knowledge Update</td>
                                     <td>Python, PyTorch, Shell</td>
-                                    <td>3</td>
-                                    <td>1</td>
+                                    <td><span class="loading-indicator">loading...</span></td>
+                                    <td><span class="loading-indicator">loading...</span></td>
                                 </tr>
                                 <tr>
                                     <td><code><a href="https://github.com/thequert/inlpfun" target="_blank"><b>iNLPfun</b></code></td>
                                     <td>NLP related scripts</td>
                                     <td>Python, PyTorch</td>
-                                    <td>3</td>
-                                    <td>2</td>
+                                    <td><span class="loading-indicator">loading...</span></td>
+                                    <td><span class="loading-indicator">loading...</span></td>
                                 </tr>
                                 <tr>
                                     <td><code><a href="https://github.com/theQuert/G4G-Hiring-Data-Science" target="_blank"><b>G4G-Hiring-Data-Science</b></code></td>
                                     <td>Hackathon - GeeksforGeeks Hiring Data Science: Scraping data from YouTube and Analyzing</td>
                                     <td>Python, NumPy</td>
-                                    <td>0</td>
-                                    <td>0</td>
+                                    <td><span class="loading-indicator">loading...</span></td>
+                                    <td><span class="loading-indicator">loading...</span></td>
                                 </tr>
                                 <tr>
                                     <td><code><a href="https://github.com/theQuert/XPS-9360-macOS" target="_blank"><b>XPS-9360-macOS</b></code></td>
                                     <td>Hackintosh on Dell XPS 13 9360</td>
                                     <td>C++, Shell, Python</td>
-                                    <td>181</td>
-                                    <td>32</td>
+                                    <td><span class="loading-indicator">loading...</span></td>
+                                    <td><span class="loading-indicator">loading...</span></td>
                                 </tr>
                                 <tr>
                                     <td><code><a href="https://github.com/theQuert/COVID-Tweets-Summ" target="_blank"><b>COVID-Tweets-Summ</b></code></td>
                                     <td>Specific-Aspect Summarization on News According to Social Sentiments</td>
                                     <td>Python, Hugging Face, PyTorch</td>
-                                    <td>0</td>
-                                    <td>0</td>
+                                    <td><span class="loading-indicator">loading...</span></td>
+                                    <td><span class="loading-indicator">loading...</span></td>
                                 </tr>
                                 <tr>
                                     <td><code><a href="https://github.com/theQuert/NLP-sentiment-analysis" target="_blank"><b>NLP-sentiment-analysis</b></code></td>
                                     <td>Sentiment Analysis models with multiple algorithms on movie reviews</td>
                                     <td>Python, Jupyter</td>
-                                    <td>2</td>
-                                    <td>2</td>
+                                    <td><span class="loading-indicator">loading...</span></td>
+                                    <td><span class="loading-indicator">loading...</span></td>
                                 </tr> 
 
                             </tbody>
@@ -562,5 +569,49 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        
+        <!-- GitHub Stats Fetcher -->
+        <script>
+            // 函數用於從GitHub API獲取儲存庫資訊
+            async function fetchGitHubStats() {
+                const repos = [
+                    { owner: 'hhhuang', repo: 'CAG' },
+                    { owner: 'theQuert', repo: 'Event-Triggered-Article-Updating-System' },
+                    { owner: 'Lightning-AI', repo: 'lit-llama' },
+                    { owner: 'hhhuang', repo: 'NetKu' },
+                    { owner: 'thequert', repo: 'inlpfun' },
+                    { owner: 'theQuert', repo: 'G4G-Hiring-Data-Science' },
+                    { owner: 'theQuert', repo: 'XPS-9360-macOS' },
+                    { owner: 'theQuert', repo: 'COVID-Tweets-Summ' },
+                    { owner: 'theQuert', repo: 'NLP-sentiment-analysis' }
+                ];
+
+                for (const { owner, repo } of repos) {
+                    try {
+                        const response = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+                        if (response.ok) {
+                            const data = await response.json();
+                            
+                            // 找到對應的表格行並更新stars和forks
+                            const repoRow = document.querySelector(`a[href="https://github.com/${owner}/${repo}"]`).closest('tr');
+                            if (repoRow) {
+                                const starsCell = repoRow.cells[3];
+                                const forksCell = repoRow.cells[4];
+                                
+                                if (starsCell) starsCell.textContent = data.stargazers_count;
+                                if (forksCell) forksCell.textContent = data.forks_count;
+                            }
+                        } else {
+                            console.error(`無法獲取 ${owner}/${repo} 的資訊: ${response.status}`);
+                        }
+                    } catch (error) {
+                        console.error(`獲取 ${owner}/${repo} 時發生錯誤:`, error);
+                    }
+                }
+            }
+
+            // 頁面載入後執行
+            document.addEventListener('DOMContentLoaded', fetchGitHubStats);
+        </script>
     </body>
 </html>
